@@ -1,0 +1,13 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { z } from "zod";
+import Products from "@/views/product/Products";
+
+const searchSchema = z.object({
+  category: z.string().optional(),
+  q: z.string().optional(),
+});
+
+export const Route = createFileRoute("/products")({
+  validateSearch: searchSchema,
+  component: Products,
+});
